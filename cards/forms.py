@@ -4,12 +4,12 @@ from .models import Card_Set, Card
 
 class Card_Set_Form(ModelForm):
     '''
-    Form mapping to the Card_Set model
+    Form  Card_Set model
     '''
     class Meta:
         model = Card_Set
         fields = ['topic', 'description', 'created_by']
-        #fields = ['topic', 'description', 'is_active']
+        fields = ['topic', 'description', 'is_active']
 
 
 
