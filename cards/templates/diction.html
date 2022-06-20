@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>{{ word_searched }}</title>
+{% endblock %}
+
+{% block body%}
+
+<!-- Display user search in the center of the page -->
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <p><b>{{ word_searched }}</b>: {{ word_def }}</p>
+    </div>
+</div>
+
+{% endblock %}
