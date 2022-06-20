@@ -1,15 +1,53 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
-{% load static %}
-{% block content %}
-<header>
-    <h1>Flash Cards</h1>
-    <link rel="stylesheet" href="{% static 'flashcard.css'%}" type="text/css">
-</header>
-<div class="flash_card">
-    <div id="flash_card_text">
-    <p>Hippo</p>
+{% block head %}
+<title>Learning Flashcards | Card Decks</title>
+{% endblock %}
+
+{% block body%}
+
+    <div class="column ml-5">
+        <h3>Custom Card Set</h3>
+        <h6>Create a custom cards set</h6>
+        <p>
+        <a class="btn btn-primary" href="{% url 'cards:create_card_set' %}"  
+        role="button">Create New</a>
+        </p>
     </div>
 
-</div>
+<div class="row">
+{% for t in topics %}
+    
+        </div><br>
+        <div class="row ml-5">
+    
+
+        <div class="column">
+
+            {% if forloop.counter0 == 2 %}
+            <div class="card text-black bg-blue mr-5" style="width: 17rem;">
+            {% else %}
+            <div class="card text-black bg-blue mr-3" style="width: 17rem;">
+            {% endif %}
+
+            <div class="card-header">{{ t.description }}
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">{{ t.topic}}</h4>
+                <h6 class="card-text">Created By: {{t.created_by}}</h6>
+                
+
+                
+                {% if t.get_card_count != 1 %}
+                    <h6 class="card-subtitle mb-2 text-white">{{ t.get_card_count }} cards in deck</h6>
+                {% else %}
+                    <h6 class="card-subtitle mb-2 text-white">{{ t.get_card_count }} card in deck</h6>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+{% endfor %}
 {% endblock %}
+
